@@ -3,6 +3,7 @@ from preprocessor import preprocess_input
 from extracter import extract_job_info
 from sorter import sort_jobs
 from renderer import render_table
+from optimizer import compute_route
 
 def run_pipeline(raw_text: str):
     """
@@ -31,6 +32,10 @@ def run_pipeline(raw_text: str):
     table = render_table(sorted_jobs)
     print(table)
 
+    print("\n--- ROUTE PLAN ---")
+    route = compute_route(sorted_jobs)
+    print(" → ".join(route))
+    
     return sorted_jobs
 
 
