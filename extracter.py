@@ -12,12 +12,6 @@ client = OpenAI(
 
 
 def extract_job_info(job_text: str) -> dict:
-    """
-    Uses Azure OpenAI Responses API to convert a job segment
-    into structured logistics fields:
-    stop, item, quantity, priority, when
-    """
-
     prompt = f"""
     You are a logistics parser. Convert the following job text into structured JSON.
 
