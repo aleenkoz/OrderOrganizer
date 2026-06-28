@@ -4,6 +4,8 @@ from extracter import extract_job_info
 from sorter import sort_jobs
 from renderer import render_table
 from optimizer import compute_route
+from summarizer import generate_summary
+
 
 def run_pipeline(raw_text: str):
     """
@@ -35,7 +37,11 @@ def run_pipeline(raw_text: str):
     print("\n--- ROUTE PLAN ---")
     route = compute_route(sorted_jobs)
     print(" → ".join(route))
-    
+
+    print("\n--- SUMMARY ---")
+    summary = generate_summary(sorted_jobs)
+    print(summary)
+
     return sorted_jobs
 
 
