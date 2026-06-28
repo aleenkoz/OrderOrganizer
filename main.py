@@ -39,7 +39,7 @@ def run_pipeline(raw_text: str):
     print(" → ".join(route))
 
     print("\n--- SUMMARY ---")
-    summary = generate_summary(sorted_jobs)
+    summary = generate_summary(sorted_jobs, route)
     print(summary)
 
     return sorted_jobs
