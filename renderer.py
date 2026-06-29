@@ -1,3 +1,6 @@
+"""A simple module to structure everything previously found 
+into a consice, easily read table."""
+
 def render_table(jobs: list) -> str:
     headers = ["Stop", "Item", "Quantity", "Priority", "When"]
 

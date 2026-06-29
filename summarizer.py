@@ -1,10 +1,13 @@
+"""This module is to generate everything previously learned into a
+human-friendly summary."""
+
 def generate_summary(jobs, route):
     """
     Produce a friendly, human-readable summary of the day's tasks.
     """
 
     if not jobs:
-        return "No jobs found today. You're all clear."
+        return "No jobs found today. You're all clear. Have a good day."
 
     total_jobs = len(jobs)
 
@@ -32,6 +35,6 @@ def generate_summary(jobs, route):
             " → ".join(route)
         )
 
-    summary.append("You're all set. Have a productive day!")
+    summary.append("You're all set. Best of luck, have a productive day!")
 
     return "\n".join(summary)
