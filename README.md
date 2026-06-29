@@ -24,12 +24,19 @@ Code
 ## 📄 Example Output (Structured)
 Stop    | Item          | Quantity | Priority | When       
 --------+---------------+----------+----------+------------
-site B  | pipes         | 3        | High     | ASAP       
-deliver | gloves        | 2        | Medium   | ASAP       
+
+site B  | pipes         | 3        | High     | ASAP 
+
+deliver | gloves        | 2        | Medium   | ASAP 
+
 A       | helmet        | 1        | Medium   | Tomorrow AM
-site D  | cement        |          | High     | ASAP       
-C       | empty pallets |          | Medium   | ASAP       
+
+site D  | cement        |          | High     | ASAP 
+
+C       | empty pallets |          | Medium   | ASAP  
+
 H       | vests         | 5        | High     | End of Day 
+
 
 
 ## 🏗️ Project Structure
