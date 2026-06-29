@@ -12,29 +12,43 @@ Parse messy free‑text logistics orders
 - Sort jobs by urgency
 - Display results in a clean table
 
+## AI Usage 
+AI chatbot: Copilot was used to partially code some of the application's modules. Specifically: renderer.py, optimizer.py,
+summarizer.py, and main.py. That was mainly for the purpose of producing correct and eaisly read formatting of the results. 
+In the rest of the modules, Copilot was used to simplify the meaning of occurring errors and to recall some forgotton concepts. 
 
 ## 🧩 Example Input
 Code
 3x pipes to site B asap; deliver gloves (2 boxes) + 1 helmet to A tomorrow am; URGENT cement to site D; pickup empty pallets from C; H needs 5 vests by end of day
 
 ## 📄 Example Output (Structured)
-Stop	Item	Quantity	Priority	When
-D	Cement	1	High	ASAP
-B	Pipes	3	High	ASAP
-A	Gloves	2 boxes	Medium	Tomorrow AM
-A	Helmet	1	Medium	Tomorrow AM
-H	Vests	5	Medium	End of Day
-C	Empty Pallets	—	Low	—
+"""
+Stop    | Item          | Quantity | Priority | When       
+--------+---------------+----------+----------+------------
+site B  | pipes         | 3        | High     | ASAP       
+deliver | gloves        | 2        | Medium   | ASAP       
+A       | helmet        | 1        | Medium   | Tomorrow AM
+site D  | cement        |          | High     | ASAP       
+C       | empty pallets |          | Medium   | ASAP       
+H       | vests         | 5        | High     | End of Day 
+"""
 
 ## 🏗️ Project Structure
-TBA
+preprocessor.py
+extracter.py
+prioritizer.py
+sorter.py
+renderer.py
+optimizer.py
+summarizer.py
+main.py
 
 ## 🚀 How It Works
 1. Preprocess text  
 Normalize separators, split into job segments.
 
 2. Extract fields  
-Use rule-based parsing or an AI model to detect:
+Uses an AI model to detect:
  - stop
  - item
  - quantity
@@ -45,7 +59,7 @@ Use rule-based parsing or an AI model to detect:
 Convert keywords like URGENT, asap, tomorrow into numeric priority.
 
 4. Sort jobs  
-Highest priority first.
+Highest priority first,based on the priorities output.
 
 5. Render table  
 Display clean, consistent columns.
