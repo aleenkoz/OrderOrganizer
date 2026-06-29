@@ -15,7 +15,7 @@ def render_table(jobs: list) -> str:
     for i in range(len(headers)):
         max_width = max(
             len(headers[i]),
-            *(len(str(row[i])) for row in rows)   # ← FIXED
+            *(len(str(row[i])) for row in rows)   
         )
         col_widths.append(max_width)
 

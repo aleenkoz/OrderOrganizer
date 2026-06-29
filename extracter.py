@@ -1,9 +1,6 @@
 import os
 from openai import OpenAI
 
-print("API KEY:", os.getenv("AZURE_API_KEY"))
-print("BASE URL:", os.getenv("AZURE_API_BASE"))
-print("DEPLOYMENT:", os.getenv("AZURE_API_DEPLOYMENT"))
 
 client = OpenAI(
     api_key=os.getenv("AZURE_API_KEY"),
