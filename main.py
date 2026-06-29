@@ -39,7 +39,8 @@ def run_pipeline(raw_text: str):
     print(" → ".join(route))
 
     print("\n--- SUMMARY ---")
-    summary = generate_summary(sorted_jobs, route)
+    language = input("What is your preferred language for the summary?")
+    summary = generate_summary(sorted_jobs, route, language)
     print(summary)
 
     return sorted_jobs

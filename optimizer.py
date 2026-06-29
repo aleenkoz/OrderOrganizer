@@ -49,8 +49,17 @@ def stop_priority(stop, jobs):
 
 #Find the route based on the weighted score, start and end at the warehouse. 
 def compute_route(jobs):
+    valid_stops = set(COORDS.keys())
+
     # Normalize stops
-    stops = {normalize_stop(job.get("stop")) for job in jobs if job.get("stop")}
+    stops = {
+        normalize_stop(job.get("stop"))
+        for job in jobs
+        if job.get("stop")
+    }
+
+    # Remove invalid stops
+    stops = [s for s in stops if s in valid_stops]
 
     # Remove Warehouse from stops
     stops = [s for s in stops if s != "Warehouse"]
@@ -73,6 +82,7 @@ def compute_route(jobs):
 
     route.append("Warehouse")
     return route
+
 
 #Test the module. 
 if __name__ == "__main__":

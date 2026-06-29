@@ -1,40 +1,52 @@
 """This module is to generate everything previously learned into a
-human-friendly summary."""
+human-friendly summary. This module also uses gpt-5.4-mini to translate 
+the summary into the user's preferred language."""
 
-def generate_summary(jobs, route):
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.getenv("AZURE_API_KEY"),
+    base_url=f"{os.getenv('AZURE_API_BASE')}/openai/v1/"
+)
+
+def translate_text(text: str, target_language: str) -> str:
     """
-    Produce a friendly, human-readable summary of the day's tasks.
+    Translate the given text into the target language using Azure OpenAI.
+    """
+    prompt = f"Translate the following text into {target_language}:\n\n{text}"
+
+    response = client.responses.create(
+        model=os.getenv("AZURE_API_DEPLOYMENT"),
+        input=prompt
+    )
+
+    return response.output_text
+
+
+def generate_summary(jobs, route, language="English"):
+    """
+    Produce a friendly summary and translate it if needed.
     """
 
     if not jobs:
-        return "No jobs found today. You're all clear. Have a good day."
+        summary = "No jobs found today. You're all clear."
+    else:
+        total_jobs = len(jobs)
+        top_job = jobs[0]
 
-    total_jobs = len(jobs)
-
-    # Highest priority job
-    top_job = jobs[0]
-    top_stop = top_job.get("stop", "")
-    top_item = top_job.get("item", "")
-    top_priority = top_job.get("priority", "")
-    top_when = top_job.get("when", "")
-
-    # Build summary text
-    summary = []
-
-    summary.append(f"You have {total_jobs} job{'s' if total_jobs > 1 else ''} today.")
-
-    summary.append(
-        f"The most urgent job is delivering {top_item} to {top_stop} "
-        f"({top_priority}, {top_when})."
-    )
-
-    # Route summary
-    if route:
-        summary.append(
-            "Your recommended visiting order is: " +
-            " → ".join(route)
+        summary = (
+            f"You have {total_jobs} jobs today.\n"
+            f"The most urgent job is delivering {top_job.get('item')} "
+            f"to {top_job.get('stop')} ({top_job.get('priority')}, {top_job.get('when')}).\n"
+            f"Your recommended visiting order is: {' → '.join(route)}.\n"
+            "You're all set. Have a productive day!"
         )
 
-    summary.append("You're all set. Best of luck, have a productive day!")
+    # If user wants English, return directly
+    if language.lower() in ["english", "en"]:
+        return summary
 
-    return "\n".join(summary)
+    # Otherwise translate
+    translated = translate_text(summary, language)
+    return translated
