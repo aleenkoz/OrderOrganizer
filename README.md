@@ -41,12 +41,19 @@ H       | vests         | 5        | High     | End of Day
 
 ## 🏗️ Project Structure
 preprocessor.py
+
 extracter.py
+
 prioritizer.py
+
 sorter.py
+
 renderer.py
+
 optimizer.py
+
 summarizer.py
+
 main.py
 
 ## 🚀 How It Works
