@@ -25,6 +25,7 @@ Code
 """
 Stop    | Item          | Quantity | Priority | When       
 --------+---------------+----------+----------+------------
+
 site B  | pipes         | 3        | High     | ASAP       
 deliver | gloves        | 2        | Medium   | ASAP       
 A       | helmet        | 1        | Medium   | Tomorrow AM
