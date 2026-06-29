@@ -71,3 +71,4 @@ Display clean, consistent columns.
 ## ⭐ Additional Details: 
 ### Run: 
 You can run the application's entire pipeline by running the main module. 
+Make sure to set your own enviroment variables for the API connection for a smooth run.
