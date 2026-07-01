@@ -40,21 +40,19 @@ H       | vests         | 5        | High     | End of Day
 
 
 ## 🏗️ Project Structure
-preprocessor.py
-
-extracter.py
-
-prioritizer.py
-
-sorter.py
-
-renderer.py
-
-optimizer.py
-
-summarizer.py
-
-main.py
+OrderOrganizer/
+│
+├── preprocessor.py
+├── extracter.py   
+├── prioritizer.py
+├── sorter.py 
+├── optimizer.py 
+├── summarizer.py 
+├── app.py
+├── templates
+|   ├──  index.html
+│   └──  result.html
+└── main.py
 
 ## 🚀 How It Works
 1. Preprocess text  
