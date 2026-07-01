@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #fde2e4, #e2ece9);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.90);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+            backdrop-filter: blur(8px);
+        }
+        h1 {
+            text-align: center;
+            color: #4b5563;
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: 600;
+        }
+        .panel {
+            background: #f3e8ff;
+            border-left: 8px solid #c084fc;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .panel h2 {
+            margin-top: 0;
+            color: #7c3aed;
+            font-size: 22px;
+        }
+        pre {
+            white-space: pre-wrap;
+            font-size: 17px;
+            color: #374151;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #a5b4fc;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-size: 17px;
+            transition: 0.25s;
+        }
+        a:hover {
+            background: #818cf8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Pipeline Results</h1>
+
+    <div class="panel">
+        <h2>Extracted Table</h2>
+        <pre>{{ table }}</pre>
+    </div>
+
+    <div class="panel">
+        <h2>Route Plan</h2>
+        <pre>{{ route }}</pre>
+    </div>
+
+    <div class="panel">
+        <h2>Summary</h2>
+        <pre>{{ summary }}</pre>
+    </div>
+
+    <a href="/">Back</a>
+</div>
+
+</body>
+</html>

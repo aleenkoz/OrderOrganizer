@@ -7,7 +7,7 @@ from optimizer import compute_route
 from summarizer import generate_summary
 
 
-def run_pipeline(raw_text: str):
+def run(raw_text: str):
     """
     Full pipeline:
     1. Split raw text into job segments
@@ -46,9 +46,18 @@ def run_pipeline(raw_text: str):
     return sorted_jobs
 
 
-if __name__ == "__main__":
-    # Example input text
-    raw_text = """3x pipes to site B asap; deliver gloves (2 boxes) +
-      1 helmet to A tomorrow am; URGENT cement to site D; pickup empty pallets from C; H needs 5 vests by end of day"""
+def run_pipeline(raw_text: str, language="English"):
+    job_segments = preprocess_input(raw_text)
+    extracted_jobs = [extract_job_info(seg) for seg in job_segments]
+    sorted_jobs = sort_jobs(extracted_jobs)
+    table = render_table(sorted_jobs)
+    route = compute_route(sorted_jobs)
+    summary = generate_summary(sorted_jobs, route, language)
 
-    run_pipeline(raw_text)
+    return {
+        "jobs": sorted_jobs,
+        "table": table,
+        "route": " → ".join(route),
+        "summary": summary
+    }
+
